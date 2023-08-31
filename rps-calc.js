@@ -4,10 +4,25 @@ let playerScore = 0;
 let computerrScore = 0;
 
 // add dom manipulation to allow player to choice option 
-const playerChoice = rps[1];
-
+let playerChoice = "";
+const playRock = document.getElementById("Rock");
+const playPaper = document.getElementById("Paper");
+const playScissors = document.getElementById("Scissors");
+playRock.addEventListener("click", () => {
+    playerChoice = rps[0];
+    playRound();
+});
+playPaper.addEventListener("click", () => {
+    playerChoice = rps[1];
+    playRound();
+});
+playScissors.addEventListener("click", () => {
+    playerChoice = rps[2];
+    playRound();
+});
 function playRound () {
     const computer = computerChoice();
+    console.log(playerScore)
     if (computer == playerChoice) {
         return "tie game";
     } else if (computer == "rock" && playerChoice == "scissors") {
@@ -30,10 +45,5 @@ function playRound () {
         return "you win";
     } 
 }
-for (let game = 0; playerScore < 5 && computerrScore < 5; game++) {
-    playRound();
-    if (playerScore == 5 || computerrScore == 5) {
-        console.log(playerScore)
-        console.log(computerrScore)
-    }
-}
+
+
